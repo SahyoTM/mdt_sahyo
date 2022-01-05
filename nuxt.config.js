@@ -44,6 +44,8 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
 
+    '@nuxtjs/auth',
+
     '@nuxt/http',
   ],
 
@@ -58,6 +60,31 @@ export default {
     manifest: {
       lang: 'fr',
     },
+  },
+
+  auth: {
+    strategies: {
+      discord: {
+        _scheme: 'oauth2',
+        authorization_endpoint: 'https://localhost:9443/user/authorize',
+        userinfo_endpoint: false,
+        access_type: 'offline',
+        access_token_endpoint: 'https://localhost:9443/token',
+        response_type: 'code',
+        token_type: 'Bearer',
+        token_key: 'access_token',
+        clientId: '928194688614268949',
+        clientSecret: 'I8RJkbmEmzNpqvSAQcoRNz2UPam4E1oC',
+      },
+    },
+    redirect: {
+      login: '/login',
+      callback: '/callback',
+      home: '/'
+    },
+  },
+  router: {
+    middleware: ['auth']
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
