@@ -4,6 +4,7 @@
         <tr>
           <td>ID Arrest</td>
           <td>Arrest Title</td>
+          <td>oui</td>
         </tr>
         <tr v-for="arrest in arrests" :key="arrest.id">
           <td>{{arrest.id}}</td>
